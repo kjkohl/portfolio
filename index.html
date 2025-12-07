@@ -383,8 +383,12 @@
 
         // --- ENTRY POINT ---
         window.onload = () => {
+            // RENDER FIRST: Call render immediately to load the visual structure of the page 
+            // before the asynchronous Firebase initialization starts.
+            render(); 
+            
+            // Then start Firebase initialization (which will call render again when auth is ready).
             initializeFirebase();
-            // Initial render call happens inside onAuthStateChanged or immediately upon auth failure/fallback
         };
     </script>
 
